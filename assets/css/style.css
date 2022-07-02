@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.card-header{
+    text-align: center;
+}
+
+tr{
+    vertical-align: middle;
+}
+
+
+.update{
+    background-color:rgba(167, 141, 247, 0.632);
+    border-radius: 15px;
+}
+
+.form-control{
+    background-color: rgb(254, 114, 226);
+}
+
+.show h2{
+    margin-left : 25px;
+    margin-top: 30px;
+}
+
+.show h4{
+    margin-left : 25px;
+}
+
+.show p{
+    margin-left : 25px;
+}
+
+.show img{
+    border-radius: 20%;
+}
+.show-single{
+    background-color: aquamarine;
+    border-radius: 15px;
+}

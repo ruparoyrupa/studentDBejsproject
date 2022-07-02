@@ -1,0 +1,19 @@
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <a class="btn btn-primary"  href="/student">Back</a>
+            <br>
+            <div class="card show-single">
+                <div class="card-body show d-flex">
+                    <img  style="width: 250px; height: 250px; object-fit: cover;" src="../assets/uploads/<%= showSingleData.photo %> " alt="">
+                  <div class="show-left">
+                    <h2><%= showSingleData.name %></h2>
+                    <p><%= showSingleData.email %></p>
+                    <p><%= showSingleData.phone %></p>
+                    <h4><%= showSingleData.location %></h4>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

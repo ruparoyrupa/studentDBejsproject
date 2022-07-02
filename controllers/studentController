@@ -1,0 +1,160 @@
+
+const student = require("../models/studentModel")
+
+
+
+/**
+ * 
+ * @des get all students 
+ * @name Get/student
+ * @access public
+ */
+
+
+
+const getAllStudents = async (req ,res) =>{
+
+  let students = await student.find();
+
+  res.render('index',{ students })
+}
+
+
+
+
+/**
+ * 
+ * @des get single students 
+ * @name Get/student
+ * @access public
+ */
+
+ const getSingleStudent = async (req ,res) =>{
+
+  let id = req.params.id;
+
+  showSingleData = await student.findById(id);
+
+  res.render('show' ,{showSingleData})
+}
+
+
+/**
+ * 
+ * @des  show student add form 
+ * @name get/student
+ * @access public
+ */
+
+ const studentAddForm = (req ,res) =>{
+  res.render('create')
+}
+
+
+/**
+ * 
+ * @des  creat students 
+ * @name Post/student
+ * @access public
+ */
+
+ const creatStudents = (req ,res) =>{
+  
+
+  // data  storage to mongoDB
+
+
+  student.create({
+    ...req.body,
+    photo : req.file.filename
+  });
+
+  // redirect home page
+
+  res.redirect('/student')
+}
+
+
+
+
+
+/**
+ * 
+ * @des delete  students 
+ * @name Get/student
+ * @access public
+ */
+
+ const deleteStudent = async (req ,res) =>{
+
+  let id = req.params.id;
+
+  await student.findByIdAndDelete(id);
+
+  res.redirect('/student');
+
+}
+
+
+
+const showSingleStudent = async (req ,res) =>{
+
+  let id = req.params.id;
+
+  singleDataShow = await student.findById(id);
+
+  res.render('update' ,{singleDataShow})
+}
+
+
+
+
+/**
+ * 
+ * @des get single students 
+ * @name Get/student
+ * @access public
+ */
+
+
+
+
+
+ const updateStudent = async (req ,res) =>{
+
+  let id = req.params.id;
+ 
+  
+ 
+
+  if (req.file) {
+  
+
+    await student.findByIdAndUpdate(id ,{...req.body , 
+      photo : req.file.filename });
+
+  }else{
+
+    await student.findByIdAndUpdate(id ,{...req.body , 
+      photo : req.body.old_photo  });
+    
+  }
+
+  res.redirect('/student');
+
+}
+
+
+// exports controller
+
+module.exports ={
+    getAllStudents,
+    creatStudents,
+    getSingleStudent,
+    studentAddForm,
+    deleteStudent,
+    showSingleStudent,
+    updateStudent
+
+   
+}
